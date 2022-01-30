@@ -1,0 +1,926 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang16393{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Consolas;}}
+{\colortbl ;\red127\green0\blue85;\red0\green0\blue0;\red100\green100\blue100;\red0\green0\blue192;\red106\green62\blue62;\red0\green128\blue128;\red63\green127\blue127;\red127\green0\blue127;\red42\green0\blue255;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9                         \ul Adding_The_New_Product_In_The_Database\ulnone (Source Code)\par
+\par
+com.simplilearn.entity\par
+\par
+\cf1\b\f1\fs32 package\cf2\b0  com.simplilearn.entity;\cf0\par
+\par
+\cf1\b import\cf2\b0  \ul javax.persistence\ulnone .Embeddable;\cf0\par
+\par
+\cf3 @\cf2\ul Embeddable\cf0\ulnone\par
+\cf1\b public\cf2\b0  \cf1\b class\cf2\b0  Address \{\cf0\par
+\par
+\cf2\tab\cf1\b private\cf2\b0  String \cf4 street\cf2 ;\cf0\par
+\cf2\tab\cf0\par
+\cf2\tab\cf1\b private\cf2\b0  String \cf4 city\cf2 ;\cf0\par
+\cf2\tab\cf0\par
+\cf2\tab\cf1\b private\cf2\b0  String \cf4 state\cf2 ;\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  String getStreet() \{\cf0\par
+\cf2\tab\tab\cf1\b return\cf2\b0  \cf4 street\cf2 ;\cf0\par
+\cf2\tab\}\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b void\cf2\b0  setStreet(String \cf5 street\cf2 ) \{\cf0\par
+\cf2\tab\tab\cf1\b this\cf2\b0 .\cf4 street\cf2  = \cf5 street\cf2 ;\cf0\par
+\cf2\tab\}\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  String getCity() \{\cf0\par
+\cf2\tab\tab\cf1\b return\cf2\b0  \cf4 city\cf2 ;\cf0\par
+\cf2\tab\}\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b void\cf2\b0  setCity(String \cf5 city\cf2 ) \{\cf0\par
+\cf2\tab\tab\cf1\b this\cf2\b0 .\cf4 city\cf2  = \cf5 city\cf2 ;\cf0\par
+\cf2\tab\}\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  String getState() \{\cf0\par
+\cf2\tab\tab\cf1\b return\cf2\b0  \cf4 state\cf2 ;\cf0\par
+\cf2\tab\}\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b void\cf2\b0  setState(String \cf5 state\cf2 ) \{\cf0\par
+\cf2\tab\tab\cf1\b this\cf2\b0 .\cf4 state\cf2  = \cf5 state\cf2 ;\cf0\par
+\cf2\tab\}\cf0\par
+\par
+\cf2\tab\cf0\par
+\cf2\}\cf0\par
+\f0\fs22\par
+\par
+package com.simplilearn.entity;\par
+\par
+import java.util.List;\par
+\par
+import javax.persistence.CascadeType;\par
+import javax.persistence.Column;\par
+import javax.persistence.Entity;\par
+import javax.persistence.GeneratedValue;\par
+import javax.persistence.Id;\par
+import javax.persistence.ManyToMany;\par
+import javax.persistence.Table;\par
+\par
+@Entity\par
+@Table(name="courses_28012022")\par
+public class Courses \{\par
+\tab\par
+\tab @Id\par
+\tab @GeneratedValue\par
+\tab @Column(name="course_id")\par
+\tab private int courseId;\par
+\tab\par
+\tab\par
+\tab @Column(name="course_name")\par
+\tab private String courseName;\par
+\tab\par
+\tab @Column(name="course_type")\par
+\tab private String courseType;\par
+\tab\par
+\tab @ManyToMany(cascade=CascadeType.ALL, mappedBy ="courses")\par
+\tab private List<Student> students;\par
+\par
+\tab public int getCourseId() \{\par
+\tab\tab return courseId;\par
+\tab\}\par
+\par
+\tab public void setCourseId(int courseId) \{\par
+\tab\tab this.courseId = courseId;\par
+\tab\}\par
+\par
+\tab public String getCourseName() \{\par
+\tab\tab return courseName;\par
+\tab\}\par
+\par
+\tab public void setCourseName(String courseName) \{\par
+\tab\tab this.courseName = courseName;\par
+\tab\}\par
+\par
+\tab public String getCourseType() \{\par
+\tab\tab return courseType;\par
+\tab\}\par
+\par
+\tab public void setCourseType(String courseType) \{\par
+\tab\tab this.courseType = courseType;\par
+\tab\}\par
+\par
+\tab public List<Student> getStudents() \{\par
+\tab\tab return students;\par
+\tab\}\par
+\par
+\tab public void setStudents(List<Student> students) \{\par
+\tab\tab this.students = students;\par
+\tab\}\par
+\}\par
+\par
+package com.simplilearn.entity;\par
+\par
+import javax.persistence.Column;\par
+import javax.persistence.Entity;\par
+import javax.persistence.GeneratedValue;\par
+import javax.persistence.Id;\par
+import javax.persistence.Table;\par
+\par
+@Entity\par
+@Table(name="eproduct_27012022")\par
+public class EProduct \{\par
+\par
+\tab @Id\par
+\tab @GeneratedValue\par
+\tab @Column(name="eproduct_id")\par
+\tab private int id;\par
+\tab\par
+\tab @Column(name="eproduct_name")\par
+\tab private String name;\par
+\tab\par
+\tab @Column(name="eproduct_price")\par
+\tab private Double price;\par
+\par
+\tab\par
+\tab //ALt + S + R\par
+\tab public int getId() \{\par
+\tab\tab return id;\par
+\tab\}\par
+\par
+\tab public void setId(int id) \{\par
+\tab\tab this.id = id;\par
+\tab\}\par
+\par
+\tab public String getName() \{\par
+\tab\tab return name;\par
+\tab\}\par
+\par
+\tab public void setName(String name) \{\par
+\tab\tab this.name = name;\par
+\tab\}\par
+\par
+\tab public Double getPrice() \{\par
+\tab\tab return price;\par
+\tab\}\par
+\par
+\tab public void setPrice(Double price) \{\par
+\tab\tab this.price = price;\par
+\tab\}\par
+\tab\par
+\}\par
+\par
+package com.simplilearn.entity;\par
+\par
+import javax.persistence.CascadeType;\par
+import javax.persistence.Column;\par
+import javax.persistence.Entity;\par
+import javax.persistence.GeneratedValue;\par
+import javax.persistence.Id;\par
+import javax.persistence.JoinColumn;\par
+import javax.persistence.ManyToOne;\par
+import javax.persistence.Table;\par
+\par
+@Entity\par
+@Table(name="phone_28012022")\par
+public class PhoneNumber \{\par
+\par
+\tab @Id\par
+\tab @GeneratedValue\par
+\tab @Column(name="phone_id")\par
+\tab private int phoneId;\par
+\tab\par
+\tab @Column(name="phone_type")\par
+\tab private String phoneType;\par
+\tab\par
+\tab @Column(name="phone_number")\par
+\tab private String phoneNumber;\par
+\tab\par
+\tab @ManyToOne(cascade=CascadeType.ALL)\par
+\tab @JoinColumn(name="student_id")\par
+\tab private Student student;\par
+\par
+\tab public int getPhoneId() \{\par
+\tab\tab return phoneId;\par
+\tab\}\par
+\par
+\tab public void setPhoneId(int phoneId) \{\par
+\tab\tab this.phoneId = phoneId;\par
+\tab\}\par
+\par
+\tab public String getPhoneType() \{\par
+\tab\tab return phoneType;\par
+\tab\}\par
+\par
+\tab public void setPhoneType(String phoneType) \{\par
+\tab\tab this.phoneType = phoneType;\par
+\tab\}\par
+\par
+\tab public String getPhoneNumber() \{\par
+\tab\tab return phoneNumber;\par
+\tab\}\par
+\par
+\tab public void setPhoneNumber(String phoneNumber) \{\par
+\tab\tab this.phoneNumber = phoneNumber;\par
+\tab\}\par
+\par
+\tab public Student getStudent() \{\par
+\tab\tab return student;\par
+\tab\}\par
+\par
+\tab public void setStudent(Student student) \{\par
+\tab\tab this.student = student;\par
+\tab\}\par
+\}\par
+\par
+package com.simplilearn.entity;\par
+\par
+import java.util.List;\par
+\par
+import javax.persistence.CascadeType;\par
+import javax.persistence.Column;\par
+import javax.persistence.Embedded;\par
+import javax.persistence.Entity;\par
+import javax.persistence.FetchType;\par
+import javax.persistence.GeneratedValue;\par
+import javax.persistence.Id;\par
+import javax.persistence.JoinColumn;\par
+import javax.persistence.JoinTable;\par
+import javax.persistence.ManyToMany;\par
+import javax.persistence.OneToMany;\par
+import javax.persistence.Table;\par
+\par
+@Entity\par
+@Table(name = "student_28012022")\par
+public class Student \{\par
+\par
+\tab @Id\par
+\tab @GeneratedValue\par
+\tab @Column(name = "student_id")\par
+\tab private int studentId;\par
+\par
+\tab @Column(name = "fname")\par
+\tab private String fname;\par
+\par
+\tab @Column(name = "lname")\par
+\tab private String lname;\par
+\par
+\tab @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")\par
+\tab public List<PhoneNumber> phoneNumbers;\par
+\par
+\tab @ManyToMany(cascade = CascadeType.ALL)\par
+\tab @JoinTable(name = "student_courses_link_28012022", joinColumns = \{\par
+\tab\tab\tab @JoinColumn(name = "student_id") \}, inverseJoinColumns = \{ @JoinColumn(name = "course_id") \})\par
+\tab public List<Courses> courses;\par
+\par
+\tab @Embedded\par
+\tab public Address address;\par
+\par
+\tab public String getAddress() \{\par
+\tab\tab StringBuilder sb = new StringBuilder();\par
+\par
+\tab\tab if (address != null) \{\par
+\tab\tab\tab sb.append(this.address.getStreet());\par
+\tab\tab\tab sb.append(", " + address.getCity());\par
+\tab\tab\tab sb.append(", " + address.getState());\par
+\tab\tab\}\par
+\tab\tab return sb.toString();\par
+\tab\}\par
+\par
+\tab public void setAddress(Address address) \{\par
+\tab\tab this.address = address;\par
+\tab\}\par
+\par
+\tab public String getCourses() \{\par
+\tab\tab StringBuilder sb = new StringBuilder();\par
+\tab\tab if (courses != null) \{\par
+\tab\tab\tab for (Courses pn : courses) \{\par
+\tab\tab\tab\tab sb.append(pn.getCourseName() + ", ");\par
+\tab\tab\tab\}\par
+\tab\tab\}\par
+\tab\tab return sb.toString();\par
+\tab\}\par
+\par
+\tab public void setCourses(List<Courses> courses) \{\par
+\tab\tab this.courses = courses;\par
+\tab\}\par
+\par
+\tab public int getStudentId() \{\par
+\tab\tab return studentId;\par
+\tab\}\par
+\par
+\tab public void setStudentId(int studentId) \{\par
+\tab\tab this.studentId = studentId;\par
+\tab\}\par
+\par
+\tab public String getFname() \{\par
+\tab\tab return fname;\par
+\tab\}\par
+\par
+\tab public void setFname(String fname) \{\par
+\tab\tab this.fname = fname;\par
+\tab\}\par
+\par
+\tab public String getLname() \{\par
+\tab\tab return lname;\par
+\tab\}\par
+\par
+\tab public void setLname(String lname) \{\par
+\tab\tab this.lname = lname;\par
+\tab\}\par
+\par
+\tab public String getPhoneNumbers() \{\par
+\tab\tab StringBuilder sb = new StringBuilder();\par
+\tab\tab if (phoneNumbers != null) \{\par
+\tab\tab\tab for (PhoneNumber pn : phoneNumbers) \{\par
+\tab\tab\tab\tab sb.append(pn.getPhoneNumber() + ", ");\par
+\tab\tab\tab\}\par
+\tab\tab\}\par
+\tab\tab return sb.toString();\par
+\tab\}\par
+\par
+\tab public void setPhoneNumbers(List<PhoneNumber> phoneNumbers) \{\par
+\tab\tab this.phoneNumbers = phoneNumbers;\par
+\tab\}\par
+\par
+\}\par
+\par
+\par
+com.simplilearn.servlets\par
+\par
+\par
+\par
+\par
+package com.simplilearn.servlets;\par
+\par
+import java.io.IOException;\par
+import java.io.PrintWriter;\par
+\par
+import javax.servlet.ServletException;\par
+import javax.servlet.annotation.WebServlet;\par
+import javax.servlet.http.HttpServlet;\par
+import javax.servlet.http.HttpServletRequest;\par
+import javax.servlet.http.HttpServletResponse;\par
+\par
+import org.hibernate.Session;\par
+import org.hibernate.SessionFactory;\par
+import org.hibernate.Transaction;\par
+\par
+import com.simplilearn.entity.EProduct;\par
+import com.simplilearn.util.HibernateUtil;\par
+\par
+/**\par
+ * Servlet implementation class AddProductServlet\par
+ */\par
+@WebServlet("/add-product")\par
+public class AddProductServlet extends HttpServlet \{\par
+\tab private static final long serialVersionUID = 1L;\par
+       \par
+    /**\par
+     * @see HttpServlet#HttpServlet()\par
+     */\par
+    public AddProductServlet() \{\par
+        super();\par
+        // TODO Auto-generated constructor stub\par
+    \}\par
+\par
+\tab /**\par
+\tab  * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)\par
+\tab  */\par
+\tab protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException \{\par
+\tab\tab request.getRequestDispatcher("add-product.html").include(request, response);\par
+\tab\}\par
+\par
+\tab /**\par
+\tab  * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)\par
+\tab  */\par
+\tab protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException \{\par
+\tab\tab\par
+\tab\tab PrintWriter out = response.getWriter();\par
+\tab\tab\par
+\tab\tab String productName = request.getParameter("name");\par
+\tab\tab String productPrice = request.getParameter("price");\par
+\tab\tab\par
+\tab\tab //Step1: Gets session Factory\par
+\tab\tab SessionFactory sf = HibernateUtil.buildSessionFactory();\par
+\tab\tab\par
+\tab\tab //Step 2: Gets Session object\par
+\tab\tab Session session = sf.openSession();\par
+\tab\tab\par
+\tab\tab //Step3: Gets Tx object and begin transaction\par
+\tab\tab Transaction tx =  session.beginTransaction();\par
+\tab\tab\par
+\tab\tab // Step 4: Create and populate entity object\par
+\tab\tab EProduct product = new EProduct();\par
+\tab\tab product.setName(productName);\par
+\tab\tab product.setPrice(Double.parseDouble(productPrice));\par
+\tab\tab\par
+\tab\tab //Step 5: <h3 style='color:green'> ProductNischithNischith is created successfully ! </h3>Save record in DB\par
+\tab\tab session.save(product);\par
+\tab\tab\par
+\tab\tab tx.commit();\par
+\tab\tab\par
+\tab\tab out.print("<h3> Product is created successfully ! <h3>");\par
+\tab\tab session.close();\par
+\par
+\tab\}\par
+\par
+\}\par
+\par
+package com.simplilearn.servlets;\par
+\par
+import java.io.IOException;\par
+import java.io.PrintWriter;\par
+import java.util.ArrayList;\par
+import java.util.List;\par
+\par
+import javax.servlet.ServletException;\par
+import javax.servlet.annotation.WebServlet;\par
+import javax.servlet.http.HttpServlet;\par
+import javax.servlet.http.HttpServletRequest;\par
+import javax.servlet.http.HttpServletResponse;\par
+\par
+import org.hibernate.Session;\par
+import org.hibernate.SessionFactory;\par
+import org.hibernate.Transaction;\par
+\par
+import com.simplilearn.entity.Address;\par
+import com.simplilearn.entity.Courses;\par
+import com.simplilearn.entity.PhoneNumber;\par
+import com.simplilearn.entity.Student;\par
+import com.simplilearn.util.HibernateUtil;\par
+\par
+/**\par
+ * Servlet implementation class AddStudentSrevlet\par
+ */\par
+@WebServlet("/add-student")\par
+public class AddStudentSrevlet extends HttpServlet \{\par
+\tab private static final long serialVersionUID = 1L;\par
+       \par
+    /**\par
+     * @see HttpServlet#HttpServlet()\par
+     */\par
+    public AddStudentSrevlet() \{\par
+        super();\par
+        // TODO Auto-generated constructor stub\par
+    \}\par
+\par
+\tab /**\par
+\tab  * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)\par
+\tab  */\par
+\tab protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException \{\par
+\tab\tab request.getRequestDispatcher("add-student.html").include(request, response);\par
+\tab\}\par
+\par
+\tab /**\par
+\tab  * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)\par
+\tab  */\par
+\tab protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException \{\par
+\tab\tab\par
+\tab\tab Student student = populateStudent(request);\par
+\tab\tab SessionFactory sf =HibernateUtil.buildSessionFactory();\par
+\tab\tab Session session = sf.openSession();\par
+\tab\tab\par
+\tab\tab Transaction tx =session.beginTransaction();\par
+\tab\tab session.save(student);\par
+\tab\tab tx.commit();\par
+\tab\tab\par
+\tab\tab PrintWriter out = response.getWriter();\par
+\tab\tab out.println("Student saved successfully!");\par
+\tab\}\par
+\par
+\tab private Student populateStudent(HttpServletRequest request) \{\par
+\tab\tab String fname = request.getParameter("fname");\par
+\tab\tab String lname = request.getParameter("lname");\par
+\tab\tab\par
+\tab\tab String phone1 = request.getParameter("phone_1");\par
+\tab\tab String phoneType1 = request.getParameter("types1");\par
+\tab\tab\par
+\tab\tab String phone2 = request.getParameter("phone_2");\par
+\tab\tab String phoneType2 = request.getParameter("types2");\par
+\tab\tab\par
+\tab\tab\par
+\tab\tab String phone3 = request.getParameter("phone_3");\par
+\tab\tab String phoneType3 = request.getParameter("types3");\par
+\tab\tab\par
+\tab\tab Student student = new Student();\par
+\tab\tab student.setFname(fname);\par
+\tab\tab student.setLname(lname);\par
+\tab\tab\par
+\tab\tab PhoneNumber p1 = new PhoneNumber();\par
+\tab\tab p1.setPhoneNumber(phone1);\par
+\tab\tab p1.setPhoneType(phoneType1);\par
+\tab\tab p1.setStudent(student);\par
+\tab\tab\par
+\tab\tab PhoneNumber p2 = new PhoneNumber();\par
+\tab\tab p2.setPhoneNumber(phone2);\par
+\tab\tab p2.setPhoneType(phoneType2);\par
+\tab\tab p2.setStudent(student);\par
+\tab\tab\par
+\tab\tab PhoneNumber p3 = new PhoneNumber();\par
+\tab\tab p3.setPhoneNumber(phone3);\par
+\tab\tab p3.setPhoneType(phoneType3);\par
+\tab\tab p3.setStudent(student);\par
+\tab\tab\par
+\tab\tab List<PhoneNumber> phones  = new ArrayList<>();\par
+\tab\tab phones.add(p1);\par
+\tab\tab phones.add(p2);\par
+\tab\tab phones.add(p3);\par
+\tab\tab\par
+\tab\tab student.setPhoneNumbers(phones);\par
+\tab\tab\par
+\tab\tab\par
+\tab\tab // ------------------ Populate Courses\par
+\tab\tab List<Student> students = new ArrayList<>();\par
+\tab\tab students.add(student);\par
+\tab\tab\par
+\tab\tab String courseName1 = request.getParameter("courses_1");\par
+\tab\tab String courseType1 = request.getParameter("courseType_1");\par
+\tab\tab\par
+\tab\tab String courseName2 = request.getParameter("courses_2");\par
+\tab\tab String courseType2 = request.getParameter("courseType_2");\par
+\tab\tab\par
+\tab\tab String courseName3 = request.getParameter("courses_3");\par
+\tab\tab String courseType3 = request.getParameter("courseType_3");\par
+\tab\tab\par
+\tab\tab Courses course1 = new Courses();\par
+\tab\tab course1.setCourseName(courseName1);\par
+\tab\tab course1.setCourseType(courseType1);\par
+\tab\tab course1.setStudents(students);\par
+\tab\tab\par
+\tab\tab Courses course2 = new Courses();\par
+\tab\tab course2.setCourseName(courseName2);\par
+\tab\tab course2.setCourseType(courseType2);\par
+\tab\tab course2.setStudents(students);\par
+\tab\tab\par
+\tab\tab Courses course3 = new Courses();\par
+\tab\tab course3.setCourseName(courseName3);\par
+\tab\tab course3.setCourseType(courseType3);\par
+\tab\tab course3.setStudents(students);\par
+\tab\tab\par
+\tab\tab List<Courses> courses = new ArrayList<>();\par
+\tab\tab courses.add(course1);\par
+\tab\tab courses.add(course2);\par
+\tab\tab courses.add(course3);\par
+\tab\tab\par
+\tab\tab student.setCourses(courses);\par
+\tab\tab\par
+\tab\tab //============== Populate Address details\par
+\tab\tab String street = request.getParameter("street");\par
+\tab\tab String city = request.getParameter("city");\par
+\tab\tab String state = request.getParameter("state");\par
+\tab\tab\par
+\tab\tab Address addr = new Address();\par
+\tab\tab addr.setCity(city);\par
+\tab\tab addr.setState(state);\par
+\tab\tab addr.setStreet(street);\par
+\tab\tab student.setAddress(addr);\par
+\tab\tab\par
+\tab\tab\par
+\tab\tab\par
+\tab\tab return student;\par
+\tab\}\par
+\par
+\}\par
+\par
+package com.simplilearn.servlets;\par
+\par
+import java.io.IOException;\par
+import java.io.PrintWriter;\par
+import java.util.List;\par
+\par
+import javax.servlet.ServletException;\par
+import javax.servlet.annotation.WebServlet;\par
+import javax.servlet.http.HttpServlet;\par
+import javax.servlet.http.HttpServletRequest;\par
+import javax.servlet.http.HttpServletResponse;\par
+\par
+import org.hibernate.Session;\par
+import org.hibernate.SessionFactory;\par
+\par
+import com.simplilearn.entity.EProduct;\par
+import com.simplilearn.util.HibernateUtil;\par
+\par
+/**\par
+ * Servlet implementation class ReadProductServlet\par
+ */\par
+@WebServlet("/readproduct")\par
+public class ReadProductServlet extends HttpServlet \{\par
+\tab private static final long serialVersionUID = 1L;\par
+       \par
+    /**\par
+     * @see HttpServlet#HttpServlet()\par
+     */\par
+    public ReadProductServlet() \{\par
+        super();\par
+        // TODO Auto-generated constructor stub\par
+    \}\par
+\par
+\tab /**\par
+\tab  * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)\par
+\tab  */\par
+\tab protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException \{\par
+\tab\tab\par
+\tab\tab PrintWriter out = response.getWriter();\par
+\tab\tab\par
+\tab\tab SessionFactory sf = HibernateUtil.buildSessionFactory();\par
+\tab\tab\par
+\tab\tab Session session = sf.openSession();\par
+\tab\tab\par
+\tab\tab List<EProduct> products = session.createQuery(" from EProduct").list();\par
+\tab\tab\par
+\tab\tab //Show data on HTML\par
+\tab\tab\par
+\tab\tab out.print("<h1> Product List :- </h1>");\par
+\tab\tab out.print("<style> table,td,th \{ border:2px solid red; padding: 10px; \}</style>" );\par
+\tab\tab out.print("<table>");\par
+\tab\tab out.print("<tr>");\par
+\tab\tab out.print("<th> Product Id </th>");\par
+\tab\tab out.print("<th> Product Name </th>");\par
+\tab\tab out.print("<th> Product Price </th>");\par
+\tab\tab out.print("</tr>");\par
+\tab\tab\par
+\tab\tab for(EProduct p : products) \{\par
+\tab\tab\tab\par
+\tab\tab\tab out.print("<tr>");\par
+\tab\tab\tab out.print("<td>"+p.getId()+"</td>");\par
+\tab\tab\tab out.print("<td>"+p.getName()+"</td>");\par
+\tab\tab\tab out.print("<td>"+p.getPrice()+"</td>");\par
+\tab\tab\tab out.print("</tr>");\par
+\tab\tab\}\par
+\tab\tab out.print("</table>");\par
+\tab\tab\par
+\tab\tab session.close();\par
+\tab\}\par
+\par
+\tab /**\par
+\tab  * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)\par
+\tab  */\par
+\tab protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException \{\par
+\tab\tab // TODO Auto-generated method stub\par
+\tab\tab doGet(request, response);\par
+\tab\}\par
+\par
+\}\par
+\par
+\par
+package com.simplilearn.servlets;\par
+\par
+import java.io.IOException;\par
+import java.io.PrintWriter;\par
+import java.util.List;\par
+\par
+import javax.rmi.CORBA.StubDelegate;\par
+import javax.servlet.ServletException;\par
+import javax.servlet.annotation.WebServlet;\par
+import javax.servlet.http.HttpServlet;\par
+import javax.servlet.http.HttpServletRequest;\par
+import javax.servlet.http.HttpServletResponse;\par
+\par
+import org.hibernate.Session;\par
+import org.hibernate.SessionFactory;\par
+\par
+import com.simplilearn.entity.Student;\par
+import com.simplilearn.util.HibernateUtil;\par
+\par
+/**\par
+ * Servlet implementation class ReadStudentServlet\par
+ */\par
+@WebServlet("/read-student")\par
+public class ReadStudentServlet extends HttpServlet \{\par
+\tab private static final long serialVersionUID = 1L;\par
+\par
+\tab /**\par
+\tab  * @see HttpServlet#HttpServlet()\par
+\tab  */\par
+\tab public ReadStudentServlet() \{\par
+\tab\tab super();\par
+\tab\tab // TODO Auto-generated constructor stub\par
+\tab\}\par
+\par
+\tab /**\par
+\tab  * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse\par
+\tab  *      response)\par
+\tab  */\par
+\tab protected void doGet(HttpServletRequest request, HttpServletResponse response)\par
+\tab\tab\tab throws ServletException, IOException \{\par
+\par
+\tab\tab PrintWriter out = response.getWriter();\par
+\par
+\tab\tab SessionFactory sf = HibernateUtil.buildSessionFactory();\par
+\par
+\tab\tab Session session = sf.openSession();\par
+\par
+\tab\tab List<Student> students = session.createQuery(" from Student").list();\par
+\tab\tab\par
+\par
+\tab\tab out.print("<h1> Student List :- </h1>");\par
+\tab\tab out.print("<style> table, td, th \{border:2px solid red; padding:10px;\}</style>");\par
+\tab\tab out.print("<table>");\par
+\tab\tab out.print("<tr>");\par
+\tab\tab out.print("<th> Student Id </th>");\par
+\tab\tab out.print("<th> Student First Name </th>");\par
+\tab\tab out.print("<th> Student Last Name </th>");\par
+\tab\tab out.print("<th> Student PhoneNumbers </th>");\par
+\tab\tab out.print("<th> Student Courses </th>");\par
+\tab\tab out.print("<th> Student Address </th>");\par
+\tab\tab out.print("</tr>");\par
+\par
+\tab\tab for (Student student : students) \{\par
+\tab\tab\tab out.print("<tr>");\par
+\tab\tab\tab out.print("<td>" + student.getStudentId() + "</td>");\par
+\tab\tab\tab out.print("<td>" + student.getFname() + "</td>");\par
+\tab\tab\tab out.print("<td>" + student.getLname() + "</td>");\par
+\tab\tab\tab out.print("<td>" + student.getPhoneNumbers() + "</td>");\par
+\tab\tab\tab out.print("<td>" + student.getCourses() + "</td>");\par
+\tab\tab\tab out.print("<td>" + student.getAddress() + "</td>");\par
+\tab\tab\tab out.print("</tr>");\par
+\tab\tab\}\par
+\tab\tab session.close();\par
+\tab\tab out.print("</table> </body> </html>");\par
+\tab\}\par
+\par
+\tab /**\par
+\tab  * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse\par
+\tab  *      response)\par
+\tab  */\par
+\tab protected void doPost(HttpServletRequest request, HttpServletResponse response)\par
+\tab\tab\tab throws ServletException, IOException \{\par
+\tab\tab // TODO Auto-generated method stub\par
+\tab\tab doGet(request, response);\par
+\tab\}\par
+\par
+\}\par
+\par
+\par
+\par
+com.simplilearn.util\par
+\par
+\par
+\par
+package com.simplilearn.util;\par
+\par
+import org.hibernate.SessionFactory;\par
+import org.hibernate.cfg.Configuration;\par
+\par
+import com.simplilearn.entity.Courses;\par
+import com.simplilearn.entity.EProduct;\par
+import com.simplilearn.entity.PhoneNumber;\par
+import com.simplilearn.entity.Student;\par
+\par
+public class HibernateUtil \{\par
+\par
+\tab public static SessionFactory buildSessionFactory() \{\par
+\tab\tab\par
+\tab\tab // Step 1\par
+\tab\tab Configuration cfg = new Configuration();\par
+\tab\tab cfg.configure("hibernate.cfg.xml");\par
+\tab\tab cfg.addAnnotatedClass(EProduct.class);\par
+\tab\tab cfg.addAnnotatedClass(Student.class);\par
+\tab\tab cfg.addAnnotatedClass(PhoneNumber.class);\par
+\tab\tab cfg.addAnnotatedClass(Courses.class);\par
+\tab\tab\par
+\tab\tab //Step 2\par
+\tab\tab SessionFactory sf = cfg.buildSessionFactory();\par
+\par
+\tab\tab return sf;\par
+\tab\}\par
+\par
+\}\par
+\par
+\par
+\par
+Webapp(Code)\par
+\par
+\par
+\cf6\f1\fs32 <!\cf7 DOCTYPE\cf0  \cf6 html>\cf0\par
+\cf6 <\cf7 html\cf6 >\cf0\par
+\cf6 <\cf7 head\cf6 >\cf0\par
+\cf6 <\cf7 meta\cf0  \cf8 charset\cf2 =\cf9\i "UTF-8"\cf6\i0 >\cf0\par
+\cf6 <\cf7 title\cf6 >\cf2 Insert title here\cf6 </\cf7 title\cf6 >\cf0\par
+\cf6 </\cf7 head\cf6 >\cf0\par
+\cf6 <\cf7 body\cf6 >\cf0\par
+\par
+\cf6 <\cf7 h1\cf6 >\cf2  Add Product\cf6 </\cf7 h1\cf6 >\cf0\par
+\par
+\cf6 <\cf7 form\cf0  \cf8 method\cf2 =\cf9\i "post"\cf0\i0  \cf8 action\cf2 =\cf9\i "add-product"\cf6\i0 >\cf0\par
+\cf2\tab\cf6 <\cf7 fieldset\cf6 >\cf0\par
+\cf2\tab\tab\cf6 <\cf7 legend\cf6 >\cf2 Add Product form\cf6 </\cf7 legend\cf6 >\cf0\par
+\cf2\tab\tab Product Name: \cf6 <\cf7 input\cf0  \cf8 type\cf2 =\cf9\i "text"\cf0\i0  \cf8 name\cf2 =\cf9\i "name"\cf0\i0  \cf8 id\cf2 =\cf9\i "name"\cf0\i0  \cf6 /><\cf7 br\cf6 /><\cf7 br\cf6 />\cf0\par
+\cf2\tab\tab Product Price: \cf6 <\cf7 input\cf0  \cf8 type\cf2 =\cf9\i "text"\cf0\i0  \cf8 name\cf2 =\cf9\i "price"\cf0\i0  \cf8 id\cf0  \cf2 =\cf0  \cf9\i "price"\cf0\i0  \cf6 />\cf2  \cf6 <\cf7 br\cf6 /><\cf7 br\cf6 />\cf0\par
+\cf2\tab\tab\cf6 <\cf7 input\cf0  \cf8 type\cf2 =\cf9\i "submit"\cf0\i0  \cf8 value\cf2 =\cf9\i "Add Product"\cf6\i0 >\cf0\par
+\cf2\tab\cf6 </\cf7 fieldset\cf6 >\cf0\par
+\cf6 </\cf7 form\cf6 >\ul <!\cf7 DOCTYPE\cf2  \cf6 html>\cf0\ulnone\par
+\cf6\ul <\cf7 html\cf6 >\cf0\ulnone\par
+\cf6 <\cf7 head\cf6 >\cf0\par
+\cf6 <\cf7 meta\cf0  \cf8 charset\cf2 =\cf9\i "ISO-8859-1"\cf6\i0 >\cf0\par
+\cf6 <\cf7 title\cf6 >\cf2 Insert title here\cf6 </\cf7 title\cf6 >\cf0\par
+\cf6 </\cf7 head\cf6 >\cf0\par
+\cf6 <\cf7 body\cf6 >\cf0\par
+\par
+\cf6 </\cf7 body\cf6 >\cf0\par
+\cf6 </\cf7 html\cf6 >\par
+\par
+\par
+\par
+<!\cf7 DOCTYPE\cf0  \cf6 html>\cf0\par
+\cf6 <\cf7 html\cf6 >\cf0\par
+\cf6 <\cf7 head\cf6 >\cf0\par
+\cf6 <\cf7 meta\cf0  \cf8 charset\cf2 =\cf9\i "UTF-8"\cf6\i0 >\cf0\par
+\cf6 <\cf7 title\cf6 >\cf2 Add Student\cf6 </\cf7 title\cf6 >\cf0\par
+\cf6 </\cf7 head\cf6 >\cf0\par
+\cf6 <\cf7 body\cf6 >\cf0\par
+\par
+\cf2\tab\cf6 <\cf7 h1\cf6 >\cf2 Add Student Page\cf6 </\cf7 h1\cf6 >\cf0\par
+\par
+\cf2\tab\cf6 <\cf7 form\cf0  \cf8 method\cf2 =\cf9\i "post"\cf0\i0  \cf8 action\cf2 =\cf9\i "add-student"\cf6\i0 >\cf0\par
+\cf2\tab\tab\cf6 <\cf7 fieldset\cf6 >\cf0\par
+\cf2\tab\tab\tab\cf6 <\cf7 legend\cf6 >\cf2 Add Student Form\cf6 </\cf7 legend\cf6 >\cf0\par
+\cf2\tab\tab\tab First Name: \cf6 <\cf7 input\cf0  \cf8 type\cf2 =\cf9\i "text"\cf0\i0  \cf8 name\cf2 =\cf9\i "fname"\cf0\i0  \cf8 id\cf2 =\cf9\i "fname"\cf0\i0  \cf6 />\cf2  \cf6 <\cf7 br\cf0  \cf6 />\cf0\par
+\cf2\tab\tab\tab Last Name: \cf6 <\cf7 input\cf0  \cf8 type\cf2 =\cf9\i "text"\cf0\i0  \cf8 name\cf2 =\cf9\i "lname"\cf0\i0  \cf8 id\cf2 =\cf9\i "lname"\cf0\i0  \cf6 />\cf2  \cf6 <\cf7 br\cf0  \cf6 />\cf0\par
+\par
+\cf2\tab\tab\tab\cf6 <\cf7 p\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\cf6 <\cf7 label\cf0  \cf8 for\cf2 =\cf9\i "name"\cf6\i0 >\cf2  Phone Number1\cf6 </\cf7 label\cf6 >\cf2  \cf6 <\cf7 input\cf0  \cf8 type\cf2 =\cf9\i "text"\cf0\i0\par
+\tab\tab\tab\tab\tab\cf8 name\cf2 =\cf9\i "phone_1"\cf0\i0  \cf6 />\cf2  \cf6 <\cf7 select\cf0  \cf8 name\cf2 =\cf9\i "types1"\cf0\i0  \cf8 id\cf2 =\cf9\i "types1"\cf6\i0 >\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf6 <\cf7 option\cf0  \cf8 value\cf2 =\cf9\i "1"\cf6\i0 >\cf2 Office\cf6 </\cf7 option\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf6 <\cf7 option\cf0  \cf8 value\cf2 =\cf9\i "2"\cf6\i0 >\cf2 Cell\cf6 </\cf7 option\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf6 <\cf7 option\cf0  \cf8 value\cf2 =\cf9\i "3"\cf6\i0 >\cf2\ul Fax\cf6\ulnone </\cf7 option\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\cf6 </\cf7 select\cf6 >\cf0\par
+\cf2\tab\tab\tab\cf6 </\cf7 p\cf6 >\cf0\par
+\par
+\cf2\tab\tab\tab\cf6 <\cf7 p\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\cf6 <\cf7 label\cf0  \cf8 for\cf2 =\cf9\i "name"\cf6\i0 >\cf2  Phone Number2\cf6 </\cf7 label\cf6 >\cf2  \cf6 <\cf7 input\cf0  \cf8 type\cf2 =\cf9\i "text"\cf0\i0\par
+\tab\tab\tab\tab\tab\cf8 name\cf2 =\cf9\i "phone_2"\cf0\i0  \cf6 />\cf2  \cf6 <\cf7 select\cf0  \cf8 name\cf2 =\cf9\i "types2"\cf0\i0  \cf8 id\cf2 =\cf9\i "types2"\cf6\i0 >\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf6 <\cf7 option\cf0  \cf8 value\cf2 =\cf9\i "1"\cf6\i0 >\cf2 Office\cf6 </\cf7 option\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf6 <\cf7 option\cf0  \cf8 value\cf2 =\cf9\i "2"\cf6\i0 >\cf2 Cell\cf6 </\cf7 option\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf6 <\cf7 option\cf0  \cf8 value\cf2 =\cf9\i "3"\cf6\i0 >\cf2\ul Fax\cf6\ulnone </\cf7 option\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\cf6 </\cf7 select\cf6 >\cf0\par
+\cf2\tab\tab\tab\cf6 </\cf7 p\cf6 >\cf0\par
+\par
+\cf2\tab\tab\tab\cf6 <\cf7 p\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\cf6 <\cf7 label\cf0  \cf8 for\cf2 =\cf9\i "name"\cf6\i0 >\cf2  Phone Number3\cf6 </\cf7 label\cf6 >\cf2  \cf6 <\cf7 input\cf0  \cf8 type\cf2 =\cf9\i "text"\cf0\i0\par
+\tab\tab\tab\tab\tab\cf8 name\cf2 =\cf9\i "phone_3"\cf0\i0  \cf6 />\cf2  \cf6 <\cf7 select\cf0  \cf8 name\cf2 =\cf9\i "types3"\cf0\i0  \cf8 id\cf2 =\cf9\i "types3"\cf6\i0 >\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf6 <\cf7 option\cf0  \cf8 value\cf2 =\cf9\i "1"\cf6\i0 >\cf2 Office\cf6 </\cf7 option\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf6 <\cf7 option\cf0  \cf8 value\cf2 =\cf9\i "2"\cf6\i0 >\cf2 Cell\cf6 </\cf7 option\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf6 <\cf7 option\cf0  \cf8 value\cf2 =\cf9\i "3"\cf6\i0 >\cf2\ul Fax\cf6\ulnone </\cf7 option\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\cf6 </\cf7 select\cf6 >\cf0\par
+\cf2\tab\tab\tab\cf6 </\cf7 p\cf6 >\cf0\par
+\cf2\tab\tab\tab\cf0\par
+\cf2\tab\tab\tab\cf0\par
+\cf2\tab\tab\tab\cf6 <\cf7 p\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\cf6 <\cf7 label\cf0  \cf8 for\cf2 =\cf9\i "name"\cf6\i0 >\cf2 Courses1\cf6 </\cf7 label\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\cf6 <\cf7 input\cf0  \cf8 type\cf2 =\cf9\i "text"\cf0\i0  \cf8 name\cf2 =\cf9\i "courses_1"\cf0\i0  \cf6 />\cf0\par
+\cf2\tab\tab\tab\tab\cf6 <\cf7 select\cf0  \cf8 name\cf2 =\cf9\i "courseType_1"\cf0\i0  \cf8 id\cf2 =\cf9\i "courseType_1"\cf6\i0 >\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf6 <\cf7 option\cf0  \cf8 value\cf2 =\cf9\i "1"\cf6\i0 >\cf2 Java\cf6 </\cf7 option\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf6 <\cf7 option\cf0  \cf8 value\cf2 =\cf9\i "2"\cf6\i0 >\cf2\ul Hibernate\cf6\ulnone </\cf7 option\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf6 <\cf7 option\cf0  \cf8 value\cf2 =\cf9\i "3"\cf6\i0 >\cf2 Spring\cf6 </\cf7 option\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\cf6 </\cf7 select\cf6 >\cf0\par
+\cf2\tab\tab\tab\cf6 </\cf7 p\cf6 >\cf0\par
+\cf2\tab\tab\tab\cf0\par
+\cf2\tab\tab\tab\cf6 <\cf7 p\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\cf6 <\cf7 label\cf0  \cf8 for\cf2 =\cf9\i "name"\cf6\i0 >\cf2 Courses2\cf6 </\cf7 label\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\cf6 <\cf7 input\cf0  \cf8 type\cf2 =\cf9\i "text"\cf0\i0  \cf8 name\cf2 =\cf9\i "courses_2"\cf0\i0  \cf6 />\cf0\par
+\cf2\tab\tab\tab\tab\cf6 <\cf7 select\cf0  \cf8 name\cf2 =\cf9\i "courseType_2"\cf0\i0  \cf8 id\cf2 =\cf9\i "courseType_2"\cf6\i0 >\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf6 <\cf7 option\cf0  \cf8 value\cf2 =\cf9\i "1"\cf6\i0 >\cf2 Java\cf6 </\cf7 option\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf6 <\cf7 option\cf0  \cf8 value\cf2 =\cf9\i "2"\cf6\i0 >\cf2\ul Hibernate\cf6\ulnone </\cf7 option\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf6 <\cf7 option\cf0  \cf8 value\cf2 =\cf9\i "3"\cf6\i0 >\cf2 Spring\cf6 </\cf7 option\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\cf6 </\cf7 select\cf6 >\cf0\par
+\cf2\tab\tab\tab\cf6 </\cf7 p\cf6 >\cf0\par
+\cf2\tab\tab\tab\cf0\par
+\cf2\tab\tab\tab\cf6 <\cf7 p\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\cf6 <\cf7 label\cf0  \cf8 for\cf2 =\cf9\i "name"\cf6\i0 >\cf2 Courses3\cf6 </\cf7 label\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\cf6 <\cf7 input\cf0  \cf8 type\cf2 =\cf9\i "text"\cf0\i0  \cf8 name\cf2 =\cf9\i "courses_3"\cf0\i0  \cf6 />\cf0\par
+\cf2\tab\tab\tab\tab\cf6 <\cf7 select\cf0  \cf8 name\cf2 =\cf9\i "courseType_3"\cf0\i0  \cf8 id\cf2 =\cf9\i "courseType_3"\cf6\i0 >\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf6 <\cf7 option\cf0  \cf8 value\cf2 =\cf9\i "1"\cf6\i0 >\cf2 Java\cf6 </\cf7 option\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf6 <\cf7 option\cf0  \cf8 value\cf2 =\cf9\i "2"\cf6\i0 >\cf2\ul Hibernate\cf6\ulnone </\cf7 option\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\tab\cf6 <\cf7 option\cf0  \cf8 value\cf2 =\cf9\i "3"\cf6\i0 >\cf2 Spring\cf6 </\cf7 option\cf6 >\cf0\par
+\cf2\tab\tab\tab\tab\cf6 </\cf7 select\cf6 >\cf0\par
+\cf2\tab\tab\tab\cf6 </\cf7 p\cf6 >\cf0\par
+\cf2\tab\tab\tab\cf0\par
+\cf2\tab\tab\tab\cf6 <\cf7 p\cf6 >\cf0\par
+\cf2\tab\tab\tab\cf6 <\cf7 label\cf0  \cf8 for\cf2 =\cf9\i "name"\cf6\i0 >\cf2 Address\cf6 </\cf7 label\cf6 >\cf0\par
+\cf2\tab\tab\tab\cf0\par
+\cf2\tab\tab\tab Street: \cf6 <\cf7 input\cf0  \cf8 type\cf2 =\cf9\i "text"\cf0\i0  \cf8 name\cf2 =\cf9\i "street"\cf0\i0  \cf6 />\cf2  \cf6 <\cf7 br\cf6 />\cf0\par
+\cf2\tab\tab\tab City: \cf6 <\cf7 input\cf0  \cf8 type\cf2 =\cf9\i "text"\cf0\i0  \cf8 name\cf2 =\cf9\i "city"\cf0\i0  \cf6 />\cf2  \cf6 <\cf7 br\cf6 />\cf0\par
+\cf2\tab\tab\tab State: \cf6 <\cf7 input\cf0  \cf8 type\cf2 =\cf9\i "text"\cf0\i0  \cf8 name\cf2 =\cf9\i "state"\cf6\i0 >\cf2  \cf0\par
+\cf2\tab\tab\tab\cf6 </\cf7 p\cf6 >\cf0\par
+\cf2\tab\tab\tab\cf0\par
+\cf2\tab\tab\tab\cf0\par
+\cf2\tab\tab\tab\cf6 <\cf7 br\cf0  \cf6 />\cf2  \cf6 <\cf7 input\cf0  \cf8 type\cf2 =\cf9\i "submit"\cf0\i0  \cf8 value\cf2 =\cf9\i "Add Product"\cf6\i0 >\cf0\par
+\par
+\cf2\tab\tab\cf6 </\cf7 fieldset\cf6 >\cf0\par
+\par
+\cf2\tab\cf6 </\cf7 form\cf6 >\cf0\par
+\par
+\cf6 </\cf7 body\cf6 >\cf0\par
+\cf6 </\cf7 html\cf6 >\par
+\par
+<!\cf7 DOCTYPE\cf0  \cf6 html>\cf0\par
+\cf6 <\cf7 html\cf6 >\cf0\par
+\cf6 <\cf7 head\cf6 >\cf0\par
+\cf6 <\cf7 meta\cf0  \cf8 charset\cf2 =\cf9\i "UTF-8"\cf6\i0 >\cf0\par
+\cf6 <\cf7 title\cf6 >\cf2 Student CRUD operation\cf6 </\cf7 title\cf6 >\cf0\par
+\cf6 </\cf7 head\cf6 >\cf0\par
+\cf6 <\cf7 body\cf6 >\cf0\par
+\par
+\par
+\cf2\tab\cf6 <\cf7 nav\cf6 >\cf0\par
+\cf2\tab\tab\cf6 <\cf7 a\cf0  \cf8 href\cf2 =\cf9\i "add-student"\cf6\i0 >\cf2 Add Student \cf6 </\cf7 a\cf6 >\cf2  || \cf6 <\cf7 a\cf0  \cf8 href\cf2 =\cf9\i "read-student"\cf6\i0 >\cf2  Read Student\cf6 </\cf7 a\cf6 >\cf0\par
+\cf2\tab\cf6 </\cf7 nav\cf6 >\cf0\par
+\par
+\par
+\cf6 </\cf7 body\cf6 >\cf0\par
+\cf6 </\cf7 html\cf6 >\par
+}
+ 
